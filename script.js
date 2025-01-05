@@ -7,8 +7,8 @@ let indicators = [
 ];
 
 let currentIndicatorEditing = null;
-const CLIENT_ID = ''; // Replace with your OAuth Client ID
-const API_KEY = 'AIzaSyA2kh0hx23jjIgggkNyfBL4tPjQxdUm7LE';  // Replace with your API Key
+const CLIENT_ID = '355582899135-o2u3e7356nchm1061mctls0qfa2jq7lu.apps.googleusercontent.com'; // Replace with your OAuth Client ID
+const API_KEY = '';  // Replace with your API Key
 const DISCOVERY_DOCS = ['https://www.googleapis.com/discovery/v1/apis/drive/v3/rest'];
 const SCOPES = 'https://www.googleapis.com/auth/drive';
 let gapiInited = false; // track gapi status
