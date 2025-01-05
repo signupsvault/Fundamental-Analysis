@@ -1,0 +1,484 @@
+/* Reset default margins, padding, and box-sizing for consistency */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* General body styling */
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f8f9fa; /* Light gray background */
+    color: #343a40; /* Dark text color */
+    line-height: 1.7; /* Increased line-height for readability */
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* Container for the layout */
+.container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Sidebar - Section 1 (Select Company) */
+.sidebar {
+    width: 280px;
+    background-color: #fff;
+    padding: 30px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    height: 100vh;
+    overflow-y: auto;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease; /* Smooth transform for resizing */
+}
+
+.sidebar h2 {
+    color: #007bff;
+    margin-bottom: 25px;
+    text-align: center;
+    font-weight: 500;
+}
+
+/* Main content wrapper */
+.main-content {
+    margin-left: 280px; /* Adjust to sidebar width */
+    width: calc(100% - 280px);
+    padding: 30px;
+    overflow-y: auto;
+     transition: margin-left 0.3s ease; /* Smooth margin-left change */
+}
+
+/* Company Overview Section - Section 2 */
+#companyOverview {
+    padding: 30px;
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
+    margin-bottom: 25px;
+  animation: fadeIn 0.5s ease-in-out; /* Subtle animation on display */
+}
+@keyframes fadeIn {
+ from{opacity: 0;}
+  to{opacity: 1;}
+}
+
+/* Heading Style */
+#companyOverview h2 {
+    text-align: center;
+    font-size: 2.4rem;
+     color: #007bff;
+    margin-bottom: 25px;
+    letter-spacing: 1.2px;
+    font-weight: 500;
+}
+
+/* Form Layout */
+#companyForm {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+/* Label Styling */
+#companyForm label {
+    font-weight: 500;
+    font-size: 1.1rem;
+    color: #495057;
+    display: block;
+    margin-bottom: 7px;
+}
+
+/* Input Fields */
+#companyForm input {
+    padding: 14px;
+    border: 1px solid #ced4da;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    width: 100%;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+#companyForm input:focus {
+    border-color: #007bff;
+    outline: none;
+    box-shadow: 0 0 8px rgba(0, 123, 255, 0.3); /* More prominent focus effect */
+}
+
+/* Fundamental Analysis Section - Section 3 */
+#fundamentalAnalysis {
+    padding: 30px;
+    background-color: #fff;
+    margin-top: 20px;
+    border-radius: 12px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
+  animation: fadeIn 0.5s ease-in-out;
+}
+#fundamentalAnalysis h2 {
+    color: #007bff;
+    margin-bottom: 25px;
+    text-align: center;
+    font-weight: 500;
+}
+
+/* Buttons Container */
+#actionButtons {
+    display: flex;
+    justify-content: space-between;
+    gap: 25px;
+}
+
+/* Button Styling */
+#actionButtons button {
+    padding: 14px 22px;
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    flex: 1;
+    text-align: center;
+}
+
+#actionButtons button:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px);
+}
+
+/* Individual Button Styles */
+#saveBtn {
+    background-color: #28a745;
+}
+
+#saveBtn:hover {
+    background-color: #218838;
+}
+
+#updateBtn {
+    background-color: #ffc107;
+    color: #212529;
+}
+
+#updateBtn:hover {
+    background-color: #e0a800;
+}
+
+#cancelBtn {
+    background-color: #dc3545;
+}
+
+#cancelBtn:hover {
+    background-color: #c82333;
+}
+
+#editBtn {
+    background-color: #17a2b8;
+}
+
+#editBtn:hover {
+    background-color: #138496;
+}
+
+#deleteBtn {
+    background-color: #6c757d;
+}
+
+#deleteBtn:hover {
+    background-color: #5a6268;
+}
+#addIndicatorBtn, #editBubbleBtn {
+    width: auto;
+    display: inline-block;
+    padding: 12px 20px;
+    margin-bottom: 10px;
+    border: none;
+    cursor: pointer;
+    background-color: #007bff;
+    color: white;
+    border-radius: 8px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+#addIndicatorBtn:hover, #editBubbleBtn:hover {
+     background-color: #0056b3;
+     transform: translateY(-2px);
+}
+
+/* Styling for buttons and input fields */
+button, #searchCompany {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 10px;
+    border: 1px solid #ced4da;
+    border-radius: 8px;
+    cursor: auto;
+    background-color: #f8f9fa;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #e2e6ea;
+}
+
+#searchCompany:focus {
+    border-color: #007bff;
+    outline: none;
+   box-shadow: 0 0 8px rgba(0, 123, 255, 0.3);
+}
+/* Styling for dropdown list and list items */
+.dropdown-list {
+    list-style-type: none;
+    padding: 0;
+    margin-top: 8px;
+}
+
+.dropdown-list li {
+    padding: 14px;
+    background-color: #f8f9fa;
+    margin: 7px 0;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.1s ease;
+    font-size: 1.1rem;
+}
+
+.dropdown-list li:hover {
+    background-color: #e2e6ea;
+      transform: scale(1.02);
+}
+
+/* Tooltip Styles */
+.tooltip {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+}
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 250px;
+    background-color: #495057;
+    color: #fff;
+    text-align: center;
+    padding: 6px 8px;
+    border-radius: 8px;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -30px;
+    opacity: 0;
+    transition: opacity 0.3s ease, transform 0.2s ease;
+    transform: translateY(10px);
+}
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+   transform: translateY(0);
+}
+
+/* Style for the "Edit" buttons */
+.editButton {
+    display: inline-block;
+    padding: 6px 12px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 13px;
+    text-align: center;
+   transition: background-color 0.3s ease, transform 0.2s ease;
+}
+.editButton:hover {
+    background-color: #45a049;
+    transform: translateY(-2px);
+}
+
+/* Style for the "Tick" buttons */
+.tickButton {
+    display: inline-block;
+    padding: 4px 8px; /* Adjusted padding */
+    background-color: #22ef4b;
+    color: white;
+    border: none;
+    border-radius: 50%; /* Make it circular */
+    cursor: pointer;
+    font-size: 10px; /* Adjusted font size */
+    text-align: center;
+      line-height: 1; /* Adjusted line height */
+       width: 32px;  /* Adjust size*/
+        height: 32px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+.tickButton:hover {
+    background-color: #1e7de3;
+    transform: translateY(-2px);
+}
+
+/* Bubble editor styles */
+#bubbleEditor {
+    position: fixed;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, -20%);
+    background-color: #fff;
+    border: 1px solid #ddd;
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    z-index: 1000;
+    width: 600px;
+    border-radius: 12px;
+    animation: fadeIn 0.4s ease-in-out;
+}
+
+#bubbleEditor h3 {
+    margin-top: 0;
+     text-align: center;
+       color: #007bff;
+    font-weight: 500;
+  margin-bottom: 25px;
+}
+
+#bubbleList {
+    list-style-type: none;
+    padding: 0;
+}
+
+#bubbleList table {
+    width: 100%;
+    border-collapse: collapse;
+  margin-bottom: 15px;
+}
+
+#bubbleList th, #bubbleList td {
+   border: 1px solid #ddd;
+    padding: 10px;
+    text-align: left;
+}
+
+#bubbleList th {
+    background-color: #f2f2f2;
+}
+
+#bubbleList li {
+    margin-bottom: 10px;
+}
+
+
+/* New Indicator Modal */
+.modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    padding: 30px;
+    border: 1px solid #ddd;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    z-index: 1001;
+    width: 80%;
+    max-width: 550px;
+    border-radius: 12px;
+    animation: fadeIn 0.4s ease-in-out;
+}
+
+.modal-content {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: flex-start;
+}
+
+ .modal h2 {
+    text-align: center;
+    color: #007bff;
+    margin-bottom: 25px;
+   font-weight: 500;
+}
+.modal label {
+       font-weight: 500;
+    font-size: 1.1rem;
+    color: #495057;
+    display: block;
+    margin-bottom: 8px;
+}
+.modal input {
+  padding: 14px;
+    border: 1px solid #ced4da;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    width: 100%;
+    box-sizing: border-box;
+     transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+ .modal input:focus{
+     border-color: #007bff;
+    outline: none;
+      box-shadow: 0 0 8px rgba(0, 123, 255, 0.3);
+}
+
+.modal button {
+    width: 100%;
+      padding: 14px 22px;
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+     transition: background-color 0.3s ease, transform 0.2s ease;
+    text-align: center;
+}
+
+.modal button:hover {
+       background-color: #0056b3;
+       transform: translateY(-2px);
+}
+
+
+.close-modal {
+    color: #aaa;
+    float: right;
+    font-size: 30px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+.close-modal:hover{
+    color: #000;
+}
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+}
+ /* Add responsiveness to the main content */
+ @media (max-width: 768px) {
+ .sidebar {
+      width: 100%;
+        position: relative;
+    height: auto;
+    transform: translateX(0);
+  }
+  .main-content {
+      margin-left: 0;
+    width: 100%;
+        transition: margin-left 0.3s ease;
+  }
+}

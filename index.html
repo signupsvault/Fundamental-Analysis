@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Company Management</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://apis.google.com/js/api.js"></script>
+</head>
+<body>
+    <div class="container">
+        <!-- First Section: Select Company -->
+        <div class="sidebar">
+            <h2>Select Company</h2>
+            <div class="dropdown">
+                <input type="text" id="searchCompany" placeholder="Search Company..." onkeyup="filterCompanyList()">
+                <button id="addCompanyBtn" onclick="showAddCompanyForm()">Add Company</button>
+                <ul id="companyListDropdown" class="dropdown-list">
+                    <!-- Dynamic List of Companies -->
+                </ul>
+            </div>
+        </div>
+
+        <!-- Second Section: Company Overview -->
+        <div class="main-content" id="companyOverview">
+            <h2>Company Overview</h2>
+            <form id="companyForm">
+                <label for="companyName">Company Name:</label>
+                <input type="text" id="companyName" placeholder="Enter Company Name">
+
+                <label for="companySymbol">Company Symbol:</label>
+                <input type="text" id="companySymbol" placeholder="Enter Company Symbol">
+
+                <label for="companyIndustry">Industry:</label>
+                <input type="text" id="companyIndustry" placeholder="Enter Industry">
+
+                <label for="companyMarketCap">Market Cap:</label>
+                <input type="text" id="companyMarketCap" placeholder="Enter Market Cap">
+
+                <div id="actionButtons">
+                     <button type="button" id="saveBtn" onclick="saveCompany()">Save</button>
+                     <button type="button" id="updateBtn" onclick="updateCompany()">Update</button>
+                     <button type="button" id="cancelBtn" onclick="cancelEdit()">Cancel</button>
+                     <button type="button" id="editBtn" onclick="editCompany()">Edit</button>
+                     <button type="button" id="deleteBtn" onclick="deleteCompany()">Delete</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+<!-- Third Section: Fundamental Analysis -->
+<div class="main-content" id="fundamentalAnalysis" style="display: none;">
+    <h2>Fundamental Analysis</h2>
+    <form id="fundamentalForm">
+        <table>
+            <thead>
+                <tr>
+                    <th>Fundamental Indicators</th>
+                    <th>Value</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody id="fundamentalList">
+                <!-- Default fundamental indicators will be added here -->
+            </tbody>
+        </table>
+       
+        <button id="addIndicatorBtn" type="button" onclick="openNewIndicatorModal()">Add New Indicator</button>
+       <button type="button" id="editBubbleBtn" onclick="toggleBubbleEditor()">Bubble</button>
+    </form>
+</div>
+
+    <!-- New Indicator Modal -->
+    <div id="newIndicatorModal" class="modal" style="display: none;">
+         <div class="modal-content">
+            <span class="close-modal" onclick="closeNewIndicatorModal()">×</span>
+            <h2>Add New Indicator</h2>
+             <label for="newIndicatorName">Indicator Name:</label>
+                <input type="text" id="newIndicatorName" placeholder="Enter indicator name">
+                <label for="newIndicatorMeaning">Indicator Meaning:</label>
+                <input type="text" id="newIndicatorMeaning" placeholder="Enter indicator meaning">
+                <button type="button" onclick="saveNewIndicator()">Add</button>
+            </div>
+       </div>
+       <div id="modalOverlay" class="modal-overlay" style="display:none;"></div>
+<!-- Bubble editor popup -->
+<div id="bubbleEditor" style="display: none;">
+    <h3>Edit Bubble Messages</h3>
+    <ul id="bubbleList">
+        <!-- List of bubble messages for editing -->
+    </ul>
+    <button onclick="saveBubbleMessages()">Save Changes</button>
+    <button onclick="closeBubbleEditor()">Close</button>
+</div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
