@@ -5,81 +5,138 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Company Management</title>
     <link rel="stylesheet" href="styles.css">
-    <script src="https://apis.google.com/js/api.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="container">
         <!-- First Section: Select Company -->
-        <div class="sidebar">
+        <aside class="sidebar">
             <h2>Select Company</h2>
             <div class="dropdown">
                 <input type="text" id="searchCompany" placeholder="Search Company..." onkeyup="filterCompanyList()">
-                <button id="addCompanyBtn" onclick="showAddCompanyForm()">Add Company</button>
+                <button id="addCompanyBtn" class="action-button" onclick="showAddCompanyForm()">
+                    <i class="fas fa-plus"></i> Add Company
+                </button>
                 <ul id="companyListDropdown" class="dropdown-list">
                     <!-- Dynamic List of Companies -->
                 </ul>
             </div>
-        </div>
+        </aside>
 
-        <!-- Second Section: Company Overview -->
-        <div class="main-content" id="companyOverview">
-            <h2>Company Overview</h2>
-            <form id="companyForm">
-                <label for="companyName">Company Name:</label>
-                <input type="text" id="companyName" placeholder="Enter Company Name">
+       <div class="main-content-wrapper">
+             <!-- Second Section: Company Overview -->
+            <main class="main-content" id="companyOverview">
+                <header>
+                    <h2>Company Overview</h2>
+                    <p>View and modify the details of your selected company.</p>
+                </header>
+                <form id="companyForm">
+                    <div class="input-group">
+                        <label for="companyName"><i class="fas fa-building"></i> Company Name:</label>
+                        <input type="text" id="companyName" placeholder="Enter Company Name" required>
+                    </div>
+                    <div class="input-group">
+                         <label for="companySymbol"><i class="fas fa-tag"></i> Company Symbol:</label>
+                         <input type="text" id="companySymbol" placeholder="Enter Company Symbol" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="companyIndustry"><i class="fas fa-industry"></i> Industry:</label>
+                        <input type="text" id="companyIndustry" placeholder="Enter Industry" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="companyMarketCap"><i class="fas fa-chart-line"></i> Market Cap:</label>
+                        <input type="text" id="companyMarketCap" placeholder="Enter Market Cap" required>
+                    </div>
+                    <div id="actionButtons">
+                        <button type="button" id="saveBtn" class="action-button save" onclick="saveCompany()">
+                           <i class="fas fa-save"></i> Save
+                        </button>
+                        <button type="button" id="updateBtn" class="action-button update" onclick="updateCompany()">
+                             <i class="fas fa-pencil-alt"></i> Update
+                        </button>
+                        <button type="button" id="cancelBtn" class="action-button cancel" onclick="cancelEdit()">
+                             <i class="fas fa-times"></i> Cancel
+                        </button>
+                        <button type="button" id="editBtn" class="action-button edit" onclick="editCompany()">
+                             <i class="fas fa-edit"></i> Edit
+                        </button>
+                        <button type="button" id="deleteBtn" class="action-button delete" onclick="deleteCompany()">
+                             <i class="fas fa-trash"></i> Delete
+                        </button>
+                    </div>
+                </form>
+            </main>
 
-                <label for="companySymbol">Company Symbol:</label>
-                <input type="text" id="companySymbol" placeholder="Enter Company Symbol">
-
-                <label for="companyIndustry">Industry:</label>
-                <input type="text" id="companyIndustry" placeholder="Enter Industry">
-
-                <label for="companyMarketCap">Market Cap:</label>
-                <input type="text" id="companyMarketCap" placeholder="Enter Market Cap">
-
-                <div id="actionButtons">
-                     <button type="button" id="saveBtn" onclick="saveCompany()">Save</button>
-                     <button type="button" id="updateBtn" onclick="updateCompany()">Update</button>
-                     <button type="button" id="cancelBtn" onclick="cancelEdit()">Cancel</button>
-                     <button type="button" id="editBtn" onclick="editCompany()">Edit</button>
-                     <button type="button" id="deleteBtn" onclick="deleteCompany()">Delete</button>
+              <!-- Third Section: Fundamental Analysis -->
+        <main class="main-content" id="fundamentalAnalysis" style="display: none;">
+            <header>
+                <h2>Fundamental Analysis</h2>
+                <p>Analyze the company's financial health with key metrics.</p>
+            </header>
+            <div class="file-upload-section">
+                <input type="file" id="fileInput" style="display:none;">
+                <button class="action-button add" id="uploadButton">
+                   <i class="fas fa-upload"></i> Upload File
+                </button>
+                 <div id="fileDisplay">
+                 <!-- File will be displayed here -->
+                 </div>
+            </div>
+            <form id="fundamentalForm">
+                <div class="table-container">
+                  <table>
+                     <thead>
+                       <tr>
+                         <th>Fundamental Indicators</th>
+                        <th>Value</th>
+                         <th>Actions</th>
+                      </tr>
+                     </thead>
+                     <tbody id="fundamentalList">
+                    <!-- Dynamic rows of indicators here -->
+                     </tbody>
+                  </table>
+                </div>
+                <div class="form-buttons">
+                    <button id="addIndicatorBtn" type="button" class="action-button add" onclick="openNewIndicatorModal()">
+                       <i class="fas fa-plus-circle"></i> Add New Indicator
+                    </button>
+                    <button type="button" id="editBubbleBtn" class="action-button edit" onclick="toggleBubbleEditor()">
+                       <i class="fas fa-comment-dots"></i> Bubble Messages
+                     </button>
                 </div>
             </form>
-        </div>
+        </main>
+    <!-- File Preview Modal -->
+     <div id="filePreviewModal" class="modal" style="display: none;">
+        <div class="modal-content" style="align-items: stretch; ">
+        <span class="close-modal" onclick="closeFilePreviewModal()">×</span>
+          <div id="filePreviewContainer">
+              <!-- preview will be shown here -->
+          </div>
+       </div>
+    </div>
+   <div id="modalOverlay" class="modal-overlay" style="display:none;"></div>
+       </div>
     </div>
 
-<!-- Third Section: Fundamental Analysis -->
-<div class="main-content" id="fundamentalAnalysis" style="display: none;">
-    <h2>Fundamental Analysis</h2>
-    <form id="fundamentalForm">
-        <table>
-            <thead>
-                <tr>
-                    <th>Fundamental Indicators</th>
-                    <th>Value</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody id="fundamentalList">
-                <!-- Default fundamental indicators will be added here -->
-            </tbody>
-        </table>
-       
-        <button id="addIndicatorBtn" type="button" onclick="openNewIndicatorModal()">Add New Indicator</button>
-       <button type="button" id="editBubbleBtn" onclick="toggleBubbleEditor()">Bubble</button>
-    </form>
-</div>
-
-    <!-- New Indicator Modal -->
+<!-- New Indicator Modal -->
     <div id="newIndicatorModal" class="modal" style="display: none;">
          <div class="modal-content">
             <span class="close-modal" onclick="closeNewIndicatorModal()">×</span>
             <h2>Add New Indicator</h2>
-             <label for="newIndicatorName">Indicator Name:</label>
-                <input type="text" id="newIndicatorName" placeholder="Enter indicator name">
-                <label for="newIndicatorMeaning">Indicator Meaning:</label>
-                <input type="text" id="newIndicatorMeaning" placeholder="Enter indicator meaning">
-                <button type="button" onclick="saveNewIndicator()">Add</button>
+            <div class="input-group">
+                 <label for="newIndicatorName"><i class="fas fa-tag"></i> Indicator Name:</label>
+                 <input type="text" id="newIndicatorName" placeholder="Enter indicator name" required>
+            </div>
+             <div class="input-group">
+                  <label for="newIndicatorMeaning"><i class="fas fa-info-circle"></i> Indicator Meaning:</label>
+                  <input type="text" id="newIndicatorMeaning" placeholder="Enter indicator meaning" required>
+             </div>
+                <button type="button" class="action-button save" onclick="saveNewIndicator()">
+                    <i class="fas fa-check"></i> Add
+                 </button>
             </div>
        </div>
        <div id="modalOverlay" class="modal-overlay" style="display:none;"></div>
@@ -89,10 +146,27 @@
     <ul id="bubbleList">
         <!-- List of bubble messages for editing -->
     </ul>
-    <button onclick="saveBubbleMessages()">Save Changes</button>
-    <button onclick="closeBubbleEditor()">Close</button>
+    <div class="modal-buttons">
+        <button class="action-button save" onclick="saveBubbleMessages()">
+             <i class="fas fa-check"></i> Save Changes
+         </button>
+         <button class="action-button cancel" onclick="closeBubbleEditor()">
+             <i class="fas fa-times"></i> Close
+        </button>
+     </div>
 </div>
-    
+ <div id="textBoxContainer">
+        <div id="textEditorTools">
+            <button onclick="formatText('bold')">Bold</button>
+            <button onclick="formatText('italic')">Italic</button>
+             <button onclick="formatText('underline')">Underline</button>
+           <button onclick="insertLink()">Link</button>
+            <button onclick="insertList()">List</button>
+            <button onclick="clearFormat()">Clear</button>
+        </div>
+        <div id="textEditor" contenteditable="true"></div>
+        <button onclick="copyPastedText()">Copy</button>
+    </div>
     <script src="script.js"></script>
 </body>
 </html>

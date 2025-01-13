@@ -8,9 +8,9 @@
 /* General body styling */
 body {
     font-family: 'Roboto', sans-serif;
-    background-color: #f8f9fa; /* Light gray background */
-    color: #343a40; /* Dark text color */
-    line-height: 1.7; /* Increased line-height for readability */
+    background-color: #f8f9fa;
+    color: #343a40;
+    line-height: 1.7;
     min-height: 100vh;
     overflow-x: hidden;
 }
@@ -18,23 +18,23 @@ body {
 /* Container for the layout */
 .container {
     display: flex;
-    flex-direction: column;
     min-height: 100vh;
 }
 
 /* Sidebar - Section 1 (Select Company) */
 .sidebar {
-    width: 280px;
+    width: 20%;
+    max-width: 280px;
     background-color: #fff;
     padding: 30px;
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 10;
     height: 100vh;
     overflow-y: auto;
     box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease; /* Smooth transform for resizing */
+    transition: transform 0.3s ease;
+     position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 10;
 }
 
 .sidebar h2 {
@@ -44,22 +44,42 @@ body {
     font-weight: 500;
 }
 
-/* Main content wrapper */
+/* Main content wrapper (Sections 2 & 3) */
+.main-content-wrapper{
+    width: 80%;
+     display: flex;
+    flex-direction: column; /* Make main content flex container to allow stacking */
+    margin-left: 20%; /* Push main content to the right of the sidebar */
+}
+
+/* Main content for sections 2 & 3 */
 .main-content {
-    margin-left: 280px; /* Adjust to sidebar width */
-    width: calc(100% - 280px);
     padding: 30px;
     overflow-y: auto;
-     transition: margin-left 0.3s ease; /* Smooth margin-left change */
+     transition: margin-left 0.3s ease;
+     background-color: #fff;
+    border-radius: 12px;
+     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
+     margin: 15px;
+}
+
+
+.main-content header{
+  text-align: center;
+  margin-bottom: 25px;
+}
+.main-content header h2 {
+   color: #007bff;
+  font-weight: 500;
+  font-size: 2.2rem;
+ margin-bottom: 10px;
+}
+.main-content header p {
+    color: #6c757d;
 }
 
 /* Company Overview Section - Section 2 */
 #companyOverview {
-    padding: 30px;
-    background-color: #fff;
-    border-radius: 12px;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
-    margin-bottom: 25px;
   animation: fadeIn 0.5s ease-in-out; /* Subtle animation on display */
 }
 @keyframes fadeIn {
@@ -67,15 +87,6 @@ body {
   to{opacity: 1;}
 }
 
-/* Heading Style */
-#companyOverview h2 {
-    text-align: center;
-    font-size: 2.4rem;
-     color: #007bff;
-    margin-bottom: 25px;
-    letter-spacing: 1.2px;
-    font-weight: 500;
-}
 
 /* Form Layout */
 #companyForm {
@@ -85,17 +96,29 @@ body {
     margin-bottom: 20px;
 }
 
+/* Input Group Styling */
+.input-group {
+    display: flex;
+    flex-direction: column;
+}
+
 /* Label Styling */
-#companyForm label {
+.input-group label {
     font-weight: 500;
     font-size: 1.1rem;
     color: #495057;
-    display: block;
     margin-bottom: 7px;
+    display: flex; /* use flexbox */
+    align-items: center;
+    gap: 8px;
+}
+.input-group label i {
+    font-size: 1.2rem;
+    color: #007bff;
 }
 
 /* Input Fields */
-#companyForm input {
+.input-group input {
     padding: 14px;
     border: 1px solid #ced4da;
     border-radius: 8px;
@@ -105,37 +128,60 @@ body {
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-#companyForm input:focus {
+.input-group input:focus {
     border-color: #007bff;
     outline: none;
-    box-shadow: 0 0 8px rgba(0, 123, 255, 0.3); /* More prominent focus effect */
+    box-shadow: 0 0 8px rgba(0, 123, 255, 0.3);
 }
 
 /* Fundamental Analysis Section - Section 3 */
 #fundamentalAnalysis {
-    padding: 30px;
-    background-color: #fff;
     margin-top: 20px;
-    border-radius: 12px;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
   animation: fadeIn 0.5s ease-in-out;
 }
-#fundamentalAnalysis h2 {
-    color: #007bff;
-    margin-bottom: 25px;
-    text-align: center;
-    font-weight: 500;
+
+/* Table Styles */
+.table-container {
+  overflow-x: auto;
+}
+#fundamentalAnalysis table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px; /* Space below the table */
+}
+
+#fundamentalAnalysis th,
+#fundamentalAnalysis td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: left;
+}
+ #fundamentalAnalysis th {
+    background-color: #f2f2f2;
+ }
+#fundamentalAnalysis td input {
+ width: 100%;
+    padding: 8px;
+  border: 1px solid #ced4da;
+    border-radius: 4px;
+    font-size: 1.0rem;
 }
 
 /* Buttons Container */
-#actionButtons {
+.form-buttons {
     display: flex;
-    justify-content: space-between;
-    gap: 25px;
+    justify-content: flex-start;
+    gap: 20px;
+    margin-top: 20px;
 }
-
+.form-buttons {
+    display: flex;
+    justify-content: flex-start;
+    gap: 20px;
+    margin-top: 20px;
+}
 /* Button Styling */
-#actionButtons button {
+.action-button {
     padding: 14px 22px;
     font-size: 1.1rem;
     font-weight: 500;
@@ -147,74 +193,63 @@ body {
     transition: background-color 0.3s ease, transform 0.2s ease;
     flex: 1;
     text-align: center;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
 }
 
-#actionButtons button:hover {
+.action-button:hover {
     background-color: #0056b3;
     transform: translateY(-2px);
 }
 
 /* Individual Button Styles */
-#saveBtn {
+.action-button.save {
     background-color: #28a745;
 }
-
-#saveBtn:hover {
+.action-button.save:hover {
     background-color: #218838;
 }
-
-#updateBtn {
+.action-button.update {
     background-color: #ffc107;
     color: #212529;
 }
-
-#updateBtn:hover {
+.action-button.update:hover {
     background-color: #e0a800;
 }
-
-#cancelBtn {
+.action-button.cancel {
     background-color: #dc3545;
 }
 
-#cancelBtn:hover {
+.action-button.cancel:hover {
     background-color: #c82333;
 }
-
-#editBtn {
+.action-button.edit {
     background-color: #17a2b8;
 }
-
-#editBtn:hover {
+.action-button.edit:hover {
     background-color: #138496;
 }
 
-#deleteBtn {
+.action-button.delete {
     background-color: #6c757d;
 }
 
-#deleteBtn:hover {
+.action-button.delete:hover {
     background-color: #5a6268;
 }
-#addIndicatorBtn, #editBubbleBtn {
-    width: auto;
-    display: inline-block;
-    padding: 12px 20px;
-    margin-bottom: 10px;
-    border: none;
-    cursor: pointer;
-    background-color: #007bff;
+.action-button.add {
+      background-color: #007bff;
     color: white;
-    border-radius: 8px;
-    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+.action-button.add:hover {
+     background-color: #0056b3;
 }
 
-#addIndicatorBtn:hover, #editBubbleBtn:hover {
-     background-color: #0056b3;
-     transform: translateY(-2px);
-}
 
 /* Styling for buttons and input fields */
-button, #searchCompany {
+#searchCompany {
     width: 100%;
     padding: 12px;
     margin-bottom: 10px;
@@ -225,9 +260,6 @@ button, #searchCompany {
     transition: background-color 0.3s ease;
 }
 
-button:hover {
-    background-color: #e2e6ea;
-}
 
 #searchCompany:focus {
     border-color: #007bff;
@@ -256,34 +288,46 @@ button:hover {
       transform: scale(1.02);
 }
 
+/* Existing CSS... */
+
 /* Tooltip Styles */
 .tooltip {
     position: relative;
     display: inline-block;
     cursor: pointer;
 }
+
 .tooltip .tooltiptext {
     visibility: hidden;
-    width: 250px;
     background-color: #495057;
     color: #fff;
-    text-align: center;
-    padding: 6px 8px;
+    text-align: left;
+    padding: 8px 12px;
     border-radius: 8px;
     position: absolute;
     z-index: 1;
     bottom: 125%;
-    left: 50%;
-    margin-left: -30px;
+    left: auto;
+    right: 0;
+    transform: translateX(100%) translateY(10px);
     opacity: 0;
     transition: opacity 0.3s ease, transform 0.2s ease;
-    transform: translateY(10px);
+   white-space: pre-wrap; /* Allow text to wrap */
+    max-width: none; /* Remove the max width restriction */
+    width: max-content; /* Let width grow with content */
+     max-height: 300px;  /* Optional: set a max height */
+    overflow: auto; /* Enable scrollbar if content exceeds height */
+    box-sizing: border-box; /* Include padding and border in width and height */
 }
+
 .tooltip:hover .tooltiptext {
     visibility: visible;
     opacity: 1;
-   transform: translateY(0);
+    transform: translateX(100%) translateY(0);
 }
+
+
+
 
 /* Style for the "Edit" buttons */
 .editButton {
@@ -342,10 +386,10 @@ button:hover {
 
 #bubbleEditor h3 {
     margin-top: 0;
-     text-align: center;
-       color: #007bff;
+    text-align: center;
+    color: #007bff;
     font-weight: 500;
-  margin-bottom: 25px;
+    margin-bottom: 25px;
 }
 
 #bubbleList {
@@ -356,11 +400,12 @@ button:hover {
 #bubbleList table {
     width: 100%;
     border-collapse: collapse;
-  margin-bottom: 15px;
+    margin-bottom: 15px;
 }
 
-#bubbleList th, #bubbleList td {
-   border: 1px solid #ddd;
+#bubbleList th,
+#bubbleList td {
+    border: 1px solid #ddd;
     padding: 10px;
     text-align: left;
 }
@@ -373,6 +418,23 @@ button:hover {
     margin-bottom: 10px;
 }
 
+#bubbleList textarea {
+        width: 100%;
+        padding: 8px;
+        border: 1px solid #ced4da;
+        border-radius: 4px;
+        font-size: 1rem;
+       resize: vertical; /* Enable vertical resizing */
+        overflow: hidden; /* Hide overflow scrollbars */
+        height: auto; /* Allow the textarea height to auto-adjust */
+        box-sizing: border-box; /* Include padding and border in size */
+}
+.modal-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 15px;
+    margin-top: 20px;
+}
 
 /* New Indicator Modal */
 .modal {
@@ -390,28 +452,32 @@ button:hover {
     border-radius: 12px;
     animation: fadeIn 0.4s ease-in-out;
 }
-
 .modal-content {
     display: flex;
     flex-direction: column;
     gap: 20px;
     align-items: flex-start;
 }
-
  .modal h2 {
     text-align: center;
     color: #007bff;
     margin-bottom: 25px;
    font-weight: 500;
 }
-.modal label {
-       font-weight: 500;
+.modal .input-group label {
+    font-weight: 500;
     font-size: 1.1rem;
     color: #495057;
-    display: block;
     margin-bottom: 8px;
+      display: flex; /* use flexbox */
+    align-items: center;
+    gap: 8px;
 }
-.modal input {
+.modal .input-group label i {
+    font-size: 1.2rem;
+    color: #007bff;
+}
+.modal .input-group input {
   padding: 14px;
     border: 1px solid #ced4da;
     border-radius: 8px;
@@ -420,14 +486,12 @@ button:hover {
     box-sizing: border-box;
      transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
-
- .modal input:focus{
+ .modal .input-group input:focus{
      border-color: #007bff;
     outline: none;
       box-shadow: 0 0 8px rgba(0, 123, 255, 0.3);
 }
-
-.modal button {
+.modal .action-button {
     width: 100%;
       padding: 14px 22px;
     font-size: 1.1rem;
@@ -439,14 +503,16 @@ button:hover {
     cursor: pointer;
      transition: background-color 0.3s ease, transform 0.2s ease;
     text-align: center;
+     display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
 }
 
-.modal button:hover {
+.modal .action-button:hover {
        background-color: #0056b3;
        transform: translateY(-2px);
 }
-
-
 .close-modal {
     color: #aaa;
     float: right;
@@ -458,7 +524,6 @@ button:hover {
 .close-modal:hover{
     color: #000;
 }
-
 .modal-overlay {
     position: fixed;
     top: 0;
@@ -468,17 +533,224 @@ button:hover {
     background-color: rgba(0, 0, 0, 0.5);
     z-index: 1000;
 }
- /* Add responsiveness to the main content */
+
+/* Add responsiveness to the main content */
  @media (max-width: 768px) {
- .sidebar {
+  .sidebar {
+        width: 100%;
+        max-width: none;
+          position: relative;
+        height: auto;
+    }
+  .main-content-wrapper {
       width: 100%;
-        position: relative;
-    height: auto;
-    transform: translateX(0);
-  }
-  .main-content {
-      margin-left: 0;
-    width: 100%;
-        transition: margin-left 0.3s ease;
+           margin-left:0;
   }
 }
+
+/* Added Section to handle pasted text in tooltip*/
+.tooltip .tooltiptext .pasted-content {
+    font-family: sans-serif; /* Or your preferred font */
+    line-height: 1.6; /* Good readability spacing */
+    color: #f8f9fa; /* Standard text color for tooltip */
+    max-width: 400px; /* Adjust for your content width */
+    padding: 5px; /* Space around the text */
+    box-sizing: border-box; /* Padding won't break the size */
+}
+
+/* Styles for headings within tooltip */
+.tooltip .tooltiptext .pasted-content h1, .tooltip .tooltiptext .pasted-content h2,
+.tooltip .tooltiptext .pasted-content h3, .tooltip .tooltiptext .pasted-content h4,
+.tooltip .tooltiptext .pasted-content h5, .tooltip .tooltiptext .pasted-content h6 {
+    margin-bottom: 10px;
+    color: #f8f9fa;
+    line-height: 1.2;
+}
+
+.tooltip .tooltiptext .pasted-content h1 { font-size: 1.8em; }
+.tooltip .tooltiptext .pasted-content h2 { font-size: 1.6em; }
+.tooltip .tooltiptext .pasted-content h3 { font-size: 1.4em; }
+.tooltip .tooltiptext .pasted-content h4 { font-size: 1.2em; }
+.tooltip .tooltiptext .pasted-content h5 { font-size: 1.1em; }
+.tooltip .tooltiptext .pasted-content h6 { font-size: 1em; }
+
+/* Styles for paragraphs within tooltip */
+.tooltip .tooltiptext .pasted-content p {
+    margin-bottom: 15px; /* Spacing between paragraphs */
+}
+
+
+/* Styles for bold text, italics (generally respected when pasted) within the tooltip */
+.tooltip .tooltiptext .pasted-content strong {
+    font-weight: bold;
+}
+.tooltip .tooltiptext .pasted-content em {
+   font-style: italic;
+}
+/* Styles for lists (unordered & ordered) within the tooltip */
+.tooltip .tooltiptext .pasted-content ul, .tooltip .tooltiptext .pasted-content ol {
+    margin-bottom: 15px;
+    padding-left: 25px; /* Indent the list */
+}
+.tooltip .tooltiptext .pasted-content li {
+    margin-bottom: 6px; /* Space between list items */
+}
+/*  Text Editor*/
+#textBoxContainer {
+    margin-top: 20px;
+    border: 1px solid #ccc;
+   padding: 10px;
+    margin-bottom: 10px;
+     display:none;
+}
+#textEditorTools {
+   margin-bottom: 10px;
+}
+#textEditorTools button{
+  padding: 5px 10px;
+  margin-right: 5px;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+  cursor: pointer;
+    transition: background-color 0.3s ease;
+      background-color: #f8f9fa;
+}
+#textEditorTools button:hover {
+    background-color: #e2e6ea;
+}
+
+#textEditor {
+     border: 1px solid #ddd;
+     min-height: 150px;
+      padding: 10px;
+        border-radius: 8px;
+    overflow-y: auto;
+        background-color: #f8f9fa;
+      cursor: text;
+}
+
+
+/* File upload Section */
+.file-upload-section {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+     gap: 15px;
+}
+#fileDisplay {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+#fileDisplay .file-item {
+    display: flex;
+    align-items: center;
+    padding: 8px 12px;
+    background-color: #f0f0f0;
+    border-radius: 6px;
+    border: 1px solid #ddd;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+     max-width: 250px;
+}
+#fileDisplay .file-item a{
+  margin-left: 5px;
+    text-decoration: none;
+        color: #007bff;
+     transition: color 0.3s ease;
+}
+#fileDisplay .file-item a:hover{
+ color: #0056b3;
+}
+#fileDisplay .file-item span {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: inline-block;
+    max-width: 200px;
+      cursor: pointer;
+
+}
+
+#fileDisplay .file-item button {
+    padding: 4px 8px;
+      border: none;
+      border-radius: 50%;
+    cursor: pointer;
+      background-color: #dc3545;
+      color: white;
+      font-size: 12px;
+       margin-left: 8px;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+  #fileDisplay .file-item button:hover {
+    background-color: #c82333;
+    transform: translateY(-2px);
+}
+
+#filePreviewContainer {
+    padding: 20px;
+     overflow: auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+ }
+ #filePreviewContainer img,
+ #filePreviewContainer iframe {
+     max-width: 95%;
+     max-height: 90vh;
+     display: block;
+ }
+ #filePreviewContainer iframe {
+         border: none; /* Remove the border for iframes */
+       width: 100%;
+      height: 80vh; /* Take up most of the modal viewport */
+ 
+ }
+ /* Modified modal style */
+ .modal {
+     position: fixed;
+     top: 50%;
+     left: 50%;
+     transform: translate(-50%, -50%);
+     background-color: #fff;
+     padding: 30px;
+     border: 1px solid #ddd;
+     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+     z-index: 1001;
+     width: 90%;
+       max-width: 800px;
+     border-radius: 12px;
+     animation: fadeIn 0.4s ease-in-out;
+     max-height: 95vh; /* Set max height of modal */
+     overflow-y: auto;
+ }
+ .modal-content {
+     display: flex;
+     flex-direction: column;
+     gap: 20px;
+     align-items: flex-start;
+     max-height: 90vh;
+ }
+ .close-modal {
+     color: #aaa;
+     float: right;
+     font-size: 30px;
+     font-weight: bold;
+     cursor: pointer;
+     transition: color 0.3s ease;
+ }
+ .close-modal:hover{
+     color: #000;
+ }
+ .modal-overlay {
+     position: fixed;
+     top: 0;
+     left: 0;
+     width: 100%;
+     height: 100%;
+     background-color: rgba(0, 0, 0, 0.5);
+     z-index: 1000;
+ }
