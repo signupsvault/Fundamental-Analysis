@@ -68,21 +68,21 @@
                 </form>
             </main>
 
-              <!-- Third Section: Fundamental Analysis -->
+                <!-- Third Section: Fundamental Analysis -->
         <main class="main-content" id="fundamentalAnalysis" style="display: none;">
             <header>
                 <h2>Fundamental Analysis</h2>
                 <p>Analyze the company's financial health with key metrics.</p>
             </header>
-            <div class="file-upload-section">
+          <div class="file-upload-section">
+                <label for="fileInput" id="fileInputLabel" class="file-upload-label">
+                    <i class="fas fa-upload"></i> Upload File
+                </label>
                 <input type="file" id="fileInput" style="display:none;">
-                <button class="action-button add" id="uploadButton">
-                   <i class="fas fa-upload"></i> Upload File
-                </button>
-                 <div id="fileDisplay">
-                 <!-- File will be displayed here -->
-                 </div>
             </div>
+             <div id="fileDisplay">
+                    <!-- File will be displayed here -->
+                </div>
             <form id="fundamentalForm">
                 <div class="table-container">
                   <table>
@@ -142,10 +142,13 @@
        <div id="modalOverlay" class="modal-overlay" style="display:none;"></div>
 <!-- Bubble editor popup -->
 <div id="bubbleEditor" style="display: none;">
+    <span class="close-modal" onclick="closeBubbleEditor()">×</span>
     <h3>Edit Bubble Messages</h3>
-    <ul id="bubbleList">
-        <!-- List of bubble messages for editing -->
-    </ul>
+    <div class="bubble-list-container"> <!-- Add container for table -->
+        <ul id="bubbleList">
+            <!-- List of bubble messages for editing -->
+        </ul>
+    </div>
     <div class="modal-buttons">
         <button class="action-button save" onclick="saveBubbleMessages()">
              <i class="fas fa-check"></i> Save Changes

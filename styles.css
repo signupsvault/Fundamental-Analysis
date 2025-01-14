@@ -8,9 +8,9 @@
 /* General body styling */
 body {
     font-family: 'Roboto', sans-serif;
-    background-color: #f8f9fa;
-    color: #343a40;
-    line-height: 1.7;
+    background-color: #f8f9fa; /* Light gray background */
+    color: #343a40; /* Dark text color */
+    line-height: 1.7; /* Increased line-height for readability */
     min-height: 100vh;
     overflow-x: hidden;
 }
@@ -131,7 +131,7 @@ body {
 .input-group input:focus {
     border-color: #007bff;
     outline: none;
-    box-shadow: 0 0 8px rgba(0, 123, 255, 0.3);
+    box-shadow: 0 0 8px rgba(0, 123, 255, 0.3); /* More prominent focus effect */
 }
 
 /* Fundamental Analysis Section - Section 3 */
@@ -145,14 +145,12 @@ body {
   overflow-x: auto;
 }
 #fundamentalAnalysis table {
-    width: 100%;
+   width: 100%;
     border-collapse: collapse;
-    margin-bottom: 20px; /* Space below the table */
 }
 
-#fundamentalAnalysis th,
-#fundamentalAnalysis td {
-    border: 1px solid #ddd;
+#fundamentalAnalysis th, #fundamentalAnalysis td {
+  border: 1px solid #ddd;
     padding: 10px;
     text-align: left;
 }
@@ -168,11 +166,10 @@ body {
 }
 
 /* Buttons Container */
-.form-buttons {
+#actionButtons {
     display: flex;
-    justify-content: flex-start;
-    gap: 20px;
-    margin-top: 20px;
+    justify-content: space-between;
+    gap: 25px;
 }
 .form-buttons {
     display: flex;
@@ -233,11 +230,12 @@ body {
 }
 
 .action-button.delete {
-    background-color: #6c757d;
+    background-color: #f12a07;
+    margin-left: 20px;
 }
 
 .action-button.delete:hover {
-    background-color: #5a6268;
+    background-color: #bb5e20;
 }
 .action-button.add {
       background-color: #007bff;
@@ -246,7 +244,6 @@ body {
 .action-button.add:hover {
      background-color: #0056b3;
 }
-
 
 /* Styling for buttons and input fields */
 #searchCompany {
@@ -287,13 +284,20 @@ body {
     background-color: #e2e6ea;
       transform: scale(1.02);
 }
+/* Newly added */
+.dropdown-list li.selected {
+    background-color: #007bff; /* Highlight color */
+    color: #fff; /* Text color for better visibility */
+}
 
-/* Existing CSS... */
-
+.dropdown-list li.selected:hover {
+     background-color: #0056b3; /* Darken slightly on hover */
+      transform: scale(1.02);
+}
 /* Tooltip Styles */
 .tooltip {
-    position: relative;
-    display: inline-block;
+    position: relative; /* Required for absolute positioning of the tooltip */
+    display: inline-block; /* Maintain inline flow */
     cursor: pointer;
 }
 
@@ -306,28 +310,44 @@ body {
     border-radius: 8px;
     position: absolute;
     z-index: 1;
-    bottom: 125%;
-    left: auto;
-    right: 0;
-    transform: translateX(100%) translateY(10px);
+    top: 100%; /* Position below the parent */
+    left: auto; /* Allow automatic horizontal positioning */
+    right: 0;    /* Anchor to the right edge */
+    transform: translateX(100%) translateY(10px); /* Initial offset */
     opacity: 0;
     transition: opacity 0.3s ease, transform 0.2s ease;
-   white-space: pre-wrap; /* Allow text to wrap */
-    max-width: none; /* Remove the max width restriction */
-    width: max-content; /* Let width grow with content */
-     max-height: 300px;  /* Optional: set a max height */
-    overflow: auto; /* Enable scrollbar if content exceeds height */
-    box-sizing: border-box; /* Include padding and border in width and height */
+    white-space: pre-wrap; /* Allow wrapping */
+    box-sizing: border-box; /* Include padding and border in width/height calculations */
+    overflow: visible; /* Crucial: Allow content to overflow without scrollbars */
+    width: max-content; /* Added: Use max-content for dynamic width adjustment*/
+    max-width: 600px; /* Optional: Set a max-width if needed (adjust as desired) */
 }
 
 .tooltip:hover .tooltiptext {
     visibility: visible;
     opacity: 1;
-    transform: translateX(100%) translateY(0);
+    transform: translateX(100%) translateY(0); /* Reset vertical offset on hover */
 }
 
+/* Ensure tooltip is within the .bubble-list-container */
+.bubble-list-container .tooltip .tooltiptext {
+     position: absolute; /* Change to absolute to make it relative to parent*/
+     right: 0;  /* Anchor to the right edge of the parent */
+    left: auto;
+   bottom: auto; /* Change bottom to auto */
+    top: 100%;
+    transform: translateX(100%) translateY(10px);
+}
 
-
+/* Ensure tooltip is within the  #fundamentalAnalysis table */
+#fundamentalAnalysis table .tooltip .tooltiptext {
+   position: absolute; /* Change to absolute to make it relative to parent*/
+    right: 0px;  /* Anchor to the right edge of the parent */
+    left: auto;
+    bottom: auto; /* Change bottom to auto */
+    top: -10px; /* Adjust position as desired within table cell */
+     transform: translateX(100%) translateY(10px);
+}
 
 /* Style for the "Edit" buttons */
 .editButton {
@@ -371,41 +391,42 @@ body {
 /* Bubble editor styles */
 #bubbleEditor {
     position: fixed;
-    top: 20%;
+    top: 10%; /* Keep a little space from the top*/
     left: 50%;
-    transform: translate(-50%, -20%);
-    background-color: #fff;
-    border: 1px solid #ddd;
+    transform: translate(-50%, 0%); /* Adjust vertical alignment */
+    background-color: #ded7d7;
+    border: 5px solid #ddd;
     box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.1);
     padding: 30px;
     z-index: 1000;
-    width: 600px;
+    width: 80%;
+    max-width: 700px; /* Increased max width */
     border-radius: 12px;
     animation: fadeIn 0.4s ease-in-out;
+    max-height: 80vh;
+    overflow-y: auto; /* Enable vertical scrolling*/
 }
 
 #bubbleEditor h3 {
     margin-top: 0;
-    text-align: center;
-    color: #007bff;
+     text-align: center;
+       color: #007bff;
     font-weight: 500;
-    margin-bottom: 25px;
+  margin-bottom: 25px;
 }
-
 #bubbleList {
     list-style-type: none;
     padding: 0;
+        overflow-x: auto;
 }
-
 #bubbleList table {
     width: 100%;
     border-collapse: collapse;
-    margin-bottom: 15px;
+  margin-bottom: 15px;
 }
 
-#bubbleList th,
-#bubbleList td {
-    border: 1px solid #ddd;
+#bubbleList th, #bubbleList td {
+   border: 1px solid #ddd;
     padding: 10px;
     text-align: left;
 }
@@ -416,18 +437,6 @@ body {
 
 #bubbleList li {
     margin-bottom: 10px;
-}
-
-#bubbleList textarea {
-        width: 100%;
-        padding: 8px;
-        border: 1px solid #ced4da;
-        border-radius: 4px;
-        font-size: 1rem;
-       resize: vertical; /* Enable vertical resizing */
-        overflow: hidden; /* Hide overflow scrollbars */
-        height: auto; /* Allow the textarea height to auto-adjust */
-        box-sizing: border-box; /* Include padding and border in size */
 }
 .modal-buttons {
     display: flex;
@@ -636,121 +645,222 @@ body {
     align-items: center;
     margin-bottom: 20px;
      gap: 15px;
+        flex-direction: column;
+}
+.file-upload-label{
+  padding: 14px 22px;
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    text-align: center;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+.file-upload-label:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px);
 }
 #fileDisplay {
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
+  margin-top: 10px;
 }
 
-#fileDisplay .file-item {
+#fileDisplay .file-box {
     display: flex;
-    align-items: center;
-    padding: 8px 12px;
+    flex-direction: column;
+  padding: 12px;
     background-color: #f0f0f0;
     border-radius: 6px;
     border: 1px solid #ddd;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-     max-width: 250px;
+    width: fit-content;
+     max-width: 300px;
+        margin: 0 auto;
 }
-#fileDisplay .file-item a{
-  margin-left: 5px;
-    text-decoration: none;
-        color: #007bff;
-     transition: color 0.3s ease;
+#fileDisplay .file-box .file-name-container {
+  display: flex;
+     align-items: center;
+      justify-content: space-between;
+    margin-bottom: 8px;
 }
-#fileDisplay .file-item a:hover{
- color: #0056b3;
-}
-#fileDisplay .file-item span {
-    white-space: nowrap;
+#fileDisplay .file-box .file-name-container span {
+        white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
     display: inline-block;
     max-width: 200px;
-      cursor: pointer;
-
+    cursor: pointer;
 }
 
-#fileDisplay .file-item button {
-    padding: 4px 8px;
-      border: none;
-      border-radius: 50%;
-    cursor: pointer;
-      background-color: #dc3545;
-      color: white;
-      font-size: 12px;
-       margin-left: 8px;
-      transition: background-color 0.3s ease, transform 0.2s ease;
-  }
-  #fileDisplay .file-item button:hover {
-    background-color: #c82333;
-    transform: translateY(-2px);
+#fileDisplay .file-box .file-name-container button {
+  padding: 4px 8px;
+    border: none;
+    border-radius: 50%;
+  cursor: pointer;
+    background-color: #dc3545;
+    color: white;
+    font-size: 12px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+#fileDisplay .file-box .file-name-container button:hover {
+     background-color: #c82333;
+     transform: translateY(-2px);
+}
+#fileDisplay .file-box .rename-input {
+    width: 150px; /* Set an initial width */
+     border: 1px solid #ddd;
+    padding: 5px;
+     border-radius: 4px;
+}
+#fileDisplay .file-box .rename-input:focus {
+    outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 8px rgba(0, 123, 255, 0.3); /* More prominent focus effect */
+}
+#fileDisplay .file-box .rename-button {
+  padding: 4px 8px;
+    border: none;
+    border-radius: 4px;
+  cursor: pointer;
+    background-color: #4caf50;
+    color: white;
+    font-size: 12px;
+     margin-left: 8px;
+     transition: background-color 0.3s ease, transform 0.2s ease;
+}
+#fileDisplay .file-box .rename-button:hover {
+    background-color: #45a049;
+     transform: translateY(-2px);
+}
+
+#fileDisplay .file-box .file-link {
+     overflow: hidden;
+    text-overflow: ellipsis;
+    display: inline-block;
+    max-width: 200px;
+}
+#fileDisplay .file-box .file-link a {
+  text-decoration: none;
+   color: #007bff;
+     transition: color 0.3s ease;
+}
+#fileDisplay .file-box .file-link a:hover {
+    color: #0056b3;
 }
 
 #filePreviewContainer {
-    padding: 20px;
-     overflow: auto;
-      display: flex;
-      align-items: center;
-      justify-content: center;
- }
- #filePreviewContainer img,
- #filePreviewContainer iframe {
-     max-width: 95%;
-     max-height: 90vh;
-     display: block;
- }
- #filePreviewContainer iframe {
-         border: none; /* Remove the border for iframes */
-       width: 100%;
-      height: 80vh; /* Take up most of the modal viewport */
- 
- }
- /* Modified modal style */
- .modal {
-     position: fixed;
-     top: 50%;
-     left: 50%;
-     transform: translate(-50%, -50%);
-     background-color: #fff;
-     padding: 30px;
-     border: 1px solid #ddd;
-     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-     z-index: 1001;
-     width: 90%;
-       max-width: 800px;
-     border-radius: 12px;
-     animation: fadeIn 0.4s ease-in-out;
-     max-height: 95vh; /* Set max height of modal */
-     overflow-y: auto;
- }
- .modal-content {
+   padding: 20px;
+    overflow: auto;
      display: flex;
-     flex-direction: column;
-     gap: 20px;
-     align-items: flex-start;
-     max-height: 90vh;
- }
- .close-modal {
-     color: #aaa;
-     float: right;
-     font-size: 30px;
-     font-weight: bold;
-     cursor: pointer;
-     transition: color 0.3s ease;
- }
- .close-modal:hover{
-     color: #000;
- }
- .modal-overlay {
-     position: fixed;
-     top: 0;
-     left: 0;
-     width: 100%;
-     height: 100%;
-     background-color: rgba(0, 0, 0, 0.5);
-     z-index: 1000;
- }
+     align-items: center;
+     justify-content: center;
+}
+#filePreviewContainer img,
+#filePreviewContainer iframe {
+    max-width: 95%;
+    max-height: 90vh;
+    display: block;
+}
+#filePreviewContainer iframe {
+        border: none; /* Remove the border for iframes */
+      width: 100%;
+     height: 80vh; /* Take up most of the modal viewport */
+
+}
+/* Modified modal style */
+.modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    padding: 30px;
+    border: 1px solid #ddd;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    z-index: 1001;
+    width: 90%;
+    max-width: 800px;
+    border-radius: 12px;
+    animation: fadeIn 0.4s ease-in-out;
+    max-height: 95vh;
+    overflow-y: auto;
+   /* cursor: move;   Indicate it's draggable */
+    resize: both;  /* Allow resizing */
+    overflow: auto;
+     user-select: none; /* Prevent text selection while dragging */
+}
+.modal.maximized {
+  top: 0;
+  left: 0;
+  transform: none;
+    width: 100%;
+    height: 100%;
+  max-width: none;
+     max-height: none;
+        border-radius: 0; /* Remove border radius when maximized */
+  overflow: auto;
+}
+.modal-content {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: flex-start;
+    max-height: 90vh;
+      overflow: hidden; /* Prevent modal content overflowing outside */
+}
+
+ .modal .close-modal {
+    color: #aaa;
+    float: right;
+    font-size: 30px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+.modal .close-modal:hover{
+    color: #000;
+}
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+}
+#filePreviewModal .modal-content{
+      overflow: hidden;
+}
+ #filePreviewModal .modal .controls {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+  #filePreviewModal .modal .controls button {
+    padding: 5px;
+    border: none;
+    cursor: pointer;
+    background-color: #f0f0f0;
+    border-radius: 4px;
+  margin-left: 4px;
+        transition: background-color 0.3s ease, transform 0.2s ease;
+}
+ #filePreviewModal .modal .controls button:hover {
+     background-color: #e2e6ea;
+      transform: translateY(-2px);
+}
+/* File Icons */
+.file-icon {
+  margin-right: 5px; /* Spacing between the icon and filename */
+    font-size: 1.2em;
+    color: #555;
+}
